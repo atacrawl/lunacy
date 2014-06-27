@@ -1,0 +1,192 @@
+/* ====
+VARIABLES
+===== */
+$text: #333;
+$body-bg: #7BCAA5;
+$luna-bg: #FCCF26;
+
+/* ====
+MIXINS
+===== */
+@mixin border-box() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@mixin vertical-centering() {
+	position: absolute;
+	margin: auto;
+	top: 0; left: 0; right: 0; bottom: 0;
+}
+@mixin translateX($x) {
+	-webkit-transform: translateX($x);
+	-moz-transform: translateX($x);
+	transform: translateX($x);
+}
+@mixin scale($x) {
+	-webkit-transform: scale($x);
+	-moz-transform: scale($x);
+	transform: scale($x);
+}
+@mixin transition($s, $e) {
+	-webkit-transition: all $s $e;
+	-moz-transition: all $s $e;
+	transition: all $s $e;
+}
+
+/* ====
+BODY
+===== */
+*, *:after, *:before {
+	margin: 0; padding: 0;
+	@include border-box();
+}
+body {
+	background: $body-bg;
+	font: 1em/1.5 Helvetica, Arial, sans-serif;
+	color: $text;
+	height: 100%;
+}
+
+/* ====
+TEST BOX
+===== */
+.test-container {
+	width: 100%;
+	height: 50%;
+}
+.test-box {
+	background: $luna-bg;
+	text-align: center;
+	position: relative;
+}
+
+/* ====
+LUNACY
+===== */
+.has-lunacy {
+	@include vertical-centering();
+	@include border-box();
+	overflow: hidden;
+	* {
+		@include border-box();
+	}
+	.lunacy-outer {
+		position: absolute;
+		top: 0; left: 10%;
+		width: 80%;
+		height: 100%;
+		overflow: hidden;
+		.lunacy {
+			position: absolute;
+			width: 166.67%;
+			height: 100%;
+			top: 0;
+			@include translateX(-20%);
+			@include transition(.375s, ease);
+			&:before, &:after {
+				content: ' ';
+				display: table;
+			}
+			&:after { clear: both; }
+			.luna {
+				float: left;
+				width: 20%;
+				height: 100%;
+				padding: 1em;
+				background: white;
+				@include scale(.75);
+				@include transition(.375s, ease);
+			}
+			.luna-center {
+				//background: $luna-bg;
+				@include scale(1);
+			}
+		}
+		.lunacy-right {
+			@include translateX(-40%);
+		}
+		.lunacy-left {
+			@include translateX(0);
+		}
+		.lunacy-still {
+			@include transition(0s, ease);
+		}
+		.lunacy-has-2 {
+			width: 66.67%;
+			@include translateX(25%);
+			@include transition(0s, ease);
+			.luna { width: 50%; }
+		}
+		.lunacy-has-1 {
+			width: 33.33%;
+			@include translateX(100%);
+			@include transition(0s, ease);
+			.luna { width: 100%; }
+		}
+	}
+	button {
+		position: absolute;
+		z-index: 999;
+		display: block;
+		top: 0;
+		width: 10%; height: 100%;
+		line-height: 0;
+		font-size: 4em;
+		cursor: pointer;
+		background: transparent;
+		color: transparent;
+		border: none;
+		outline: none;
+		&:before {
+			content: ' ';
+			font-family: 'lunacy';
+			speak: none;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			height: 1em;
+			width: 100%;
+			text-align: center;
+			display: block;
+			color: $text;
+			z-index: 1000;
+			@include vertical-centering();
+		}
+		&:hover { background: rgba($text, .25); }
+		&:focus { outline: none; }
+	}
+	.btn-prev {
+		left: 0;
+		&:before { content: "\f053"; }
+	}
+	.btn-next {
+		right: 0;
+		&:before { content: "\f054"; }
+	}
+}
+.btn-inside {
+	.lunacy-outer {
+	left: 0;
+	width: 100%;
+	}
+}
+
+/* ====
+FONTS
+===== */
+
+@font-face {
+	font-family: 'lunacy';
+	src:url('../font/lunacy.eot?-whpv7z');
+	src:url('../font/lunacy.eot?#iefix-whpv7z') format('embedded-opentype'),
+		url('../font/lunacy.woff?-whpv7z') format('woff'),
+		url('../font/lunacy.ttf?-whpv7z') format('truetype'),
+		url('../font/lunacy.svg?-whpv7z#lunacy') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
