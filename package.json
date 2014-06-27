@@ -1,0 +1,17 @@
+{
+  "name": "Lunacy",
+  "version": "0.5",
+  "description": "Development of LunacyJS, a center-mode carousel",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^0.14.0",
+    "grunt-spritesmith": "^2.1.1"
+  },
+  "author": "Dan Boland",
+  "license": "ISC"
+}
