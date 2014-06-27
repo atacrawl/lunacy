@@ -1,9 +1,7 @@
 /* ====
 VARIABLES
 ===== */
-$text: #333;
-$body-bg: #7BCAA5;
-$luna-bg: #FCCF26;
+$text: black;
 
 /* ====
 MIXINS
@@ -32,33 +30,6 @@ MIXINS
 	-webkit-transition: all $s $e;
 	-moz-transition: all $s $e;
 	transition: all $s $e;
-}
-
-/* ====
-BODY
-===== */
-*, *:after, *:before {
-	margin: 0; padding: 0;
-	@include border-box();
-}
-body {
-	background: $body-bg;
-	font: 1em/1.5 Helvetica, Arial, sans-serif;
-	color: $text;
-	height: 100%;
-}
-
-/* ====
-TEST BOX
-===== */
-.test-container {
-	width: 100%;
-	height: 50%;
-}
-.test-box {
-	background: $luna-bg;
-	text-align: center;
-	position: relative;
 }
 
 /* ====
@@ -99,7 +70,6 @@ LUNACY
 				@include transition(.375s, ease);
 			}
 			.luna-center {
-				//background: $luna-bg;
 				@include scale(1);
 			}
 		}
