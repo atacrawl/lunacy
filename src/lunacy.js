@@ -33,9 +33,6 @@
 
 					// .has-lunacy adds important things
 					obj.addClass("has-lunacy");
-					if (obj.parent().css("position") != 'absolute') {
-						obj.parent().css("position","relative");
-					}
 
 					// establish buttons
 					if (kids.length >= 3 && o.buttons == true) {
