@@ -40,7 +40,7 @@
 					// establish buttons
 					if (kids.length >= 3 && o.buttons == true) {
 						obj.addClass('btn-'+o.buttonLocation).append('<button class="lunacy-btn btn-prev">Prev</button><button class="lunacy-btn btn-next">Next</button>');
-						$("button").click(function(){
+						$("button", obj).click(function(){
 							var $$ = $(this);
 							if ($$.hasClass("btn-next")) {
 								lunacyShift('r');
@@ -68,9 +68,9 @@
 
 					// add wrapper divs
 					obj.append('<div class="lunacy-outer"></div>');
-					$low = $(".lunacy-outer");
+					$low = $(".lunacy-outer", obj);
 					$low.append('<div class="lunacy lunacy-has-'+count+' '+o.still+'"></div>');
-					$lunacy = $(".lunacy");
+					$lunacy = $(".lunacy", obj);
 
 					// reassemble the first five items based on the number of kids
 					switch (count) {
@@ -80,13 +80,7 @@
 						case 2:
 							assemble = Array(0,1);
 							break;
-						case 3:
-							assemble = Array(0,1,2,1,2);
-							break;
-						case 4:
-							assemble = Array(0,1,2,2,3);
-							break;
-						default: // 5 or more
+						default: // 3 or more
 							assemble = Array(0,1,2,(count - 2),(count - 1));
 							break;
 					}
@@ -97,7 +91,7 @@
 					}
 
 					// assign to get a new index
-					$lunas = $(".luna");
+					$lunas = $(".luna", obj);
 
 					if (count > 2) {
 
@@ -117,7 +111,7 @@
 					}
 
 					// assign to get a new index
-					$lunas = $(".luna");
+					$lunas = $(".luna", obj);
 					lunacyLazy();
 
 				}
@@ -161,7 +155,7 @@
 							}
 						});
 					}
-					$lunas = $(".luna");
+					$lunas = $(".luna", obj);
 					lunacyLazy();
 				}
 			}

@@ -1,0 +1,73 @@
+/* ====
+VARIABLES
+===== */
+$text: #333;
+$body-bg: #5696D4;
+
+/* ====
+MIXINS
+===== */
+@mixin border-box() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@mixin box-shadow($c, $o, $x, $y, $s, $b) {
+	-webkit-box-shadow: rgba($c, $o) $x $y $s $b;
+	-moz-box-shadow: rgba($c, $o) $x $y $s $b;
+	box-shadow: rgba($c, $o) $x $y $s $b;
+}
+@mixin vertical-centering() {
+	position: absolute;
+	margin: auto;
+	top: 0; left: 0; right: 0; bottom: 0;
+}
+@mixin translateX($x) {
+	-webkit-transform: translateX($x);
+	-moz-transform: translateX($x);
+	transform: translateX($x);
+}
+@mixin scale($x) {
+	-webkit-transform: scale($x);
+	-moz-transform: scale($x);
+	transform: scale($x);
+}
+@mixin transition($s, $e) {
+	-webkit-transition: all $s $e;
+	-moz-transition: all $s $e;
+	transition: all $s $e;
+}
+
+/* ====
+BODY
+===== */
+*, *:before, *:after {
+	margin: 0; padding: 0;
+	@include border-box;
+}
+body {
+	font: 1em/1.5 Helvetica, Arial, sans-serif;
+	color: $text;
+	background: $body-bg;
+}
+
+/* ====
+CONTAINER
+===== */
+.container {
+	width: 100%;
+	height: 50%;
+}
+.luna {
+	background: transparent !important;
+	div {
+		@include box-shadow($text, .5, 0, 0, 1em, 0);
+		background: white;
+		height: 100%;
+		text-align: center;
+		p {
+			height: 1.5em;
+			@include vertical-centering;
+		}
+	}
+}

@@ -11,7 +11,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'css/lunacy.min.css' : ['src/*.scss']
+          'css/lunacy.min.css' : ['src/*.scss'],
+          'css/site.min.css' : ['src/site.scss']
         }
       }
     },
