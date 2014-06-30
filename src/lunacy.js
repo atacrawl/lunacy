@@ -18,7 +18,7 @@
 			var lunatics = new Array();
 			var assemble = new Array();
 			var $trans = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd';
-			var obj, kids, $low, $lunacy, $center, $ci, $newLuna, count, assemble, $toChange, $toRemove, $correctClass, $buildDirection;
+			var obj, kids, $low, $lunacy, $center, $ci, $new_luna, count, assemble;
 
 			return this.each(function(){
 
@@ -129,35 +129,32 @@
 
 			function lunacyShift($dir) {
 				if ($lunacy.hasClass(o.still) && ($dir == 'l' || $dir == 'r') && o.buttons == true) {
-
 					$lunacy.removeClass(o.still);
-
 					if ($dir == 'r') {
-						$toChange = $center.next();
-						$toRemove = $lunas.first();
-						$correctClass = o.right;
-						$buildDirection = 'a';
-						$newLuna = (($ci + 3) >= count) ? ($ci + 3) - count : $ci + 3;
+						$center.removeClass(o.center).next().addClass(o.center);
+						$center = $("."+o.center);
+						$ci = $center.data('index');
+						$lunacy.addClass(o.right).one($trans, function(){
+							if ($lunacy.hasClass(o.right)) {
+								$lunacy.removeClass(o.right).addClass(o.still);
+								$lunas.first().remove();
+								$new_luna = (($ci + 2) >= count) ? ($ci + 2) - count : $ci + 2;
+								lunacyBuild($new_luna,'a');
+							}
+						});
 					} else {
-						$toChange = $center.prev();
-						$toRemove = $lunas.last();
-						$correctClass = o.left;
-						$buildDirection = 'p';
-						$newLuna = (($ci - 3) < 0) ? count + ($ci - 3) : $ci - 3;
+						$center.removeClass(o.center).prev().addClass(o.center);
+						$center = $("."+o.center);
+						$ci = $center.data('index');
+						$lunacy.addClass(o.left).one($trans, function(){
+							if ($lunacy.hasClass(o.left)) {
+								$lunacy.removeClass(o.left).addClass(o.still);
+								$lunas.last().remove();
+								$new_luna = (($ci - 2) < 0) ? count + ($ci - 2) : $ci - 2;
+								lunacyBuild($new_luna,'p');
+							}
+						});
 					}
-
-					$center.removeClass(o.center);
-					$toChange.addClass(o.center);
-					$center = $toChange;
-					$ci = $toChange.data("index");
-					$lunacy.addClass($correctClass).one($trans, function(){
-						if ($lunacy.hasClass($correctClass)) {
-							$lunacy.removeClass($correctClass).addClass(o.still);
-							$toRemove.remove();
-							lunacyBuild($newLuna,$buildDirection);
-						}
-					});
-
 					$lunas = $(".luna", obj);
 					lunacyLazy();
 				}
