@@ -121,9 +121,9 @@ LUNACY
 			-moz-osx-font-smoothing: grayscale;
 			height: 1em;
 			width: 100%;
+			color: $text;
 			text-align: center;
 			display: block;
-			color: $text;
 			z-index: 1000;
 			@include vertical-centering();
 		}
@@ -143,6 +143,10 @@ LUNACY
 	.lunacy-outer {
 	left: 0;
 	width: 100%;
+	}
+	button {
+		width: 33.33%;
+		@include scale(.75);
 	}
 }
 
